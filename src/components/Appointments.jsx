@@ -6,12 +6,29 @@ function Appointments() {
   const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
-    // Fetch the list of doctors when the component mounts
-    fetch('https://doctalk-r977.onrender.com/api/v1/appointments')
-      .then(response => response.json())
-      .then(data => setDoctors(data))
-      .catch(error => console.error('Error fetching doctors:', error));
+    // Retrieve the token from localStorage
+    const token = localStorage.getItem('token');
+
+    // Check if the token is available
+    if (token) {
+      // Create headers with the Authorization header
+      const headers = {
+        Authorization: `${token}`,
+      };
+
+      // Fetch the list of doctors with the Authorization header
+      fetch('https://doctalk-r977.onrender.com/api/v1/appointments', {
+        headers,
+      })
+        .then(response => response.json())
+        .then(data => setDoctors(data))
+        .catch(error => console.error('Error fetching doctors:', error));
+    } else {
+      // Handle the case where the token is not available, e.g., redirect to login
+      console.error('Token not found in localStorage');
+    }
   }, []);
+
   console.log(doctors);
 
   return (
