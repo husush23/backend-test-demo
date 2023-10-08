@@ -8,13 +8,16 @@ function SignOut() {
   const handleSignOut = async () => {
     try {
       // Send a POST request to the sign-out endpoint with the correct URL
-      const response = await fetch('http://localhost:3000/users/sign_out', {
-        method: 'DELETE', // Use DELETE method for signing out
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: localStorage.getItem('token'),
-        },
-      });
+      const response = await fetch(
+        'https://doctalk-r977.onrender.com//users/sign_out',
+        {
+          method: 'DELETE', // Use DELETE method for signing out
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: localStorage.getItem('token'),
+          },
+        }
+      );
       localStorage.removeItem('token');
 
       if (response.ok) {

@@ -5,6 +5,7 @@ import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import Doctors from './components/Doctors';
 import Root from './components/Root';
+import Appointments from './components/Appointments';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/doctors' element={<Doctors />} />
+        <Route path='/appointments' element={<Appointments />} />
       </Route>
     </Routes>
   );

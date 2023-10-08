@@ -14,18 +14,21 @@ export default function SignIn() {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/users/sign_in', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          user: {
-            email: formData.email,
-            password: formData.password,
+      const response = await fetch(
+        'https://doctalk-r977.onrender.com//users/sign_in',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
           },
-        }),
-      });
+          body: JSON.stringify({
+            user: {
+              email: formData.email,
+              password: formData.password,
+            },
+          }),
+        }
+      );
 
       if (response.ok) {
         const token = response.headers.get('Authorization');

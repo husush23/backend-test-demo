@@ -15,7 +15,7 @@ function SignUp() {
     e.preventDefault();
     try {
       // Send a POST request to your signup endpoint with formData
-      const response = await fetch('http://localhost:3000/users', {
+      const response = await fetch('https://doctalk-r977.onrender.com/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ function SignUp() {
       });
 
       if (response.ok) {
-        localStorage.setItem('token', response.headers.get("Authorization"))
+        localStorage.setItem('token', response.headers.get('Authorization'));
         // Handle successful signup (e.g., redirect to login)
         console.log(response);
         navigate('/signin');
